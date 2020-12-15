@@ -251,7 +251,16 @@
 }
 
 - (void)addAppPath:(NSString *)path {
-    [self.view.appInfoEntity.appPathArray addObject:[NSString stringWithFormat:@"file://%@/", path]];
+    NSMutableArray<NSString *> * appPathArray = self.view.appInfoEntity.appPathArray;
+    
+    if (appPathArray.count > 0) {
+        NSString * first = appPathArray.firstObject;
+        if (first.length == 0) {
+            [appPathArray removeObjectAtIndex:0];
+        }
+    }
+    
+    [appPathArray addObject:[NSString stringWithFormat:@"file://%@/", path]];
 }
 
 #pragma mark - VC_EventHandler
