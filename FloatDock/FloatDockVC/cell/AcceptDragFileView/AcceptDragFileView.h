@@ -20,6 +20,21 @@ typedef void(^DragViewBlockPString) (NSArray * array);
 
 @interface AcceptDragFileView : NSView
 
+// demo
+// dragAppBlock = ^(NSArray * array) {
+//     @strongify(self);
+//
+//     for (int i = 0; i<array.count; i++) {
+//         NSString * path = [array[i] path];
+//         path = [NSString stringWithFormat:@"file://%@/", path];
+//
+//         [self.appInfoEntity.appPathArray addObject:path];
+//     }
+//
+//     [self updateWindowFrame];
+//     [AppInfoTool updateEntity];
+// };
+//
 @property (nonatomic, copy  ) DragViewBlockPString dragAppBlock;
 
 @end
